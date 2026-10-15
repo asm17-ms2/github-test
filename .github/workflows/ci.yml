@@ -55,4 +55,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: test ! -e frontend/FAIL
+      - if: github.event_name == 'merge_group'
+        run: test ! -e frontend/QUEUE_FAIL
       - run: sleep 30
